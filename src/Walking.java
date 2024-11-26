@@ -1,3 +1,3 @@
 interface Walking{
-    void Walking(Creature other);
+    void Walking(Creature other, Place ... place);
 }

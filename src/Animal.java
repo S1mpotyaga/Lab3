@@ -1,4 +1,5 @@
 public class Animal extends Creature {
+
     Animal(String name) {
         super(name, TypeOfCreature.ANIMAL);
     }

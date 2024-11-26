@@ -32,7 +32,7 @@ public abstract class Creature implements Handshake, Game, Walking {
     }
 
     @Override
-    public void Walking(Creature other) {
-        System.out.println(this.getName() + " идёт вместе с " + other.getName());
+    public void Walking(Creature other, Place ... places) {
+        System.out.println(this.getName() + " идёт вместе с " + other.getName() + places.toString());
     }
 }
