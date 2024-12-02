@@ -1,4 +1,4 @@
-public abstract class Creature implements Handshake, Game, Walking {
+public abstract class Creature implements Handshakeable, Gameable, Walkingable {
     private final String name;
     private final TypeOfCreature typeOfCreature;
 
@@ -16,7 +16,7 @@ public abstract class Creature implements Handshake, Game, Walking {
     }
 
     @Override
-    public void Handshake(Creature other) {
+    public void handshakeable(Creature other) {
         String result = this.getName() + " жмёт ";
         if (other.getTypeOfCreature() == TypeOfCreature.HUMAN)
             result += "руку";
@@ -27,12 +27,20 @@ public abstract class Creature implements Handshake, Game, Walking {
     }
 
     @Override
-    public void Game(Creature other) {
-        System.out.println(this.getName() + " играет с " + other.getName());
+    public void gameable(Creature other, Place ... places) {
+        System.out.print(this.getName() + " играет с " + other.getName() + " на ");
+        for (Place elem: places){
+            System.out.print(elem.toString() + ' ');
+        }
+        System.out.println();
     }
 
     @Override
-    public void Walking(Creature other, Place ... places) {
-        System.out.println(this.getName() + " идёт вместе с " + other.getName() + places.toString());
+    public void walkingable(Creature other, Place ... places) {
+        System.out.print(this.getName() + " идёт вместе с " + other.getName() + ' ');
+        for (Place elem: places){
+            System.out.print(elem.toString() + ' ');
+        }
+        System.out.println();
     }
 }

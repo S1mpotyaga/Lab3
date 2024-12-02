@@ -4,6 +4,18 @@ public class Animal extends Creature {
         super(name, TypeOfCreature.ANIMAL);
     }
 
+    public void thinking(){
+        if (Math.random() < 0.3) {
+            System.out.println(this.getName() + " подумал.");
+        }
+    }
+
+    public void nod(){
+        if (Math.random() < 0.3) {
+            System.out.println(this.getName() + " кивнул.");
+        }
+    }
+
     @Override
     public int hashCode() {
         final int MOD = (int) 1e9 + 7;
