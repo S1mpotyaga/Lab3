@@ -9,18 +9,18 @@ public class Human extends Creature {
     }
 
     @Override
-    public void thinking(){
-        System.out.println(this.getName() + " придумал.");
+    public void thinking() {
+        this.setState(State.THINK);
     }
 
     @Override
-    public void nod(){
-        System.out.println(this.getName() + " кивнул.");
+    public void nod() {
+        this.setState(State.NOD);
     }
 
-    public void setPlaces(Place ... args){
+    public void setPlaces(Place... args) {
         this.places = new ArrayList<Place>();
-        for (Place place: args){
+        for (Place place : args) {
             places.add(place);
         }
     }
@@ -36,13 +36,13 @@ public class Human extends Creature {
         }
     }
 
-    public ArrayList<Place> getPlaces() throws NullPointerException{
+    public ArrayList<Place> getPlaces() throws NullPointerException {
         return places;
     }
 
-    public String where() throws NullPointerException{
+    public String where() throws NullPointerException {
         String result = this.getName() + " здесь: ";
-        for (Place elem: this.places){
+        for (Place elem : this.places) {
             result += elem.toString() + ' ';
         }
         return result;
@@ -78,9 +78,9 @@ public class Human extends Creature {
     }
 
     @Override
-    public String toString() throws NullPointerException{
+    public String toString() throws NullPointerException {
         String result = "Человек " + super.getName() + ' ';
-        for (Place elem: places){
+        for (Place elem : places) {
             result += elem.toString();
         }
         return result;

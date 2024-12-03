@@ -1,3 +1,3 @@
 interface Gameable{
-    void gameable(Creature other, Place ... places);
+    void game(Creature other, Place ... places);
 }

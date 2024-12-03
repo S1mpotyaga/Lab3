@@ -6,16 +6,14 @@ public class Animal extends Creature {
 
     @Override
     public void thinking(){
-        if (Math.random() < 0.3) {
-            System.out.println(this.getName() + " подумал.");
-        }
+        this.setState(State.THINK);
+        System.out.println(this.getName() + " подумал.");
     }
 
     @Override
     public void nod(){
-        if (Math.random() < 0.3) {
-            System.out.println(this.getName() + " кивнул.");
-        }
+        this.setState(State.NOD);
+        System.out.println(this.getName() + " кивнул.");
     }
 
     @Override

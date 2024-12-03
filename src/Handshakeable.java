@@ -1,3 +1,3 @@
 interface Handshakeable{
-    void handshakeable(Creature other);
+    void handshake(Creature other);
 }
