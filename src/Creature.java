@@ -7,6 +7,10 @@ public abstract class Creature implements Handshakeable, Gameable, Walkingable {
         this.typeOfCreature = typeOfCreature;
     }
 
+    abstract void thinking();
+
+    abstract void nod();
+
     public String getName() {
         return name;
     }

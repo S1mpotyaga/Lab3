@@ -8,19 +8,40 @@ public class Human extends Creature {
         super(name, TypeOfCreature.HUMAN);
     }
 
+    @Override
+    public void thinking(){}
+
+    @Override
+    public void nod(){}
+
+    public void setPlaces(Place ... args){
+        this.places = new ArrayList<Place>();
+        for (Place place: args){
+            places.add(place);
+        }
+    }
+
     public void addPlaces(Place... args) {
         try {
             for (Place elem : args) {
                 places.add(elem);
             }
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Нечего добавлять!!!");
+            System.out.println("Некуда добавлять!");
             System.exit(-1);
         }
     }
 
-    public ArrayList<Place> getPlaces() {
+    public ArrayList<Place> getPlaces() throws NullPointerException{
         return places;
+    }
+
+    public String where() throws NullPointerException{
+        String result = this.getName() + " здесь: ";
+        for (Place elem: this.places){
+            result += elem.toString() + ' ';
+        }
+        return result;
     }
 
     public void setFamily(Family family) {
@@ -53,7 +74,11 @@ public class Human extends Creature {
     }
 
     @Override
-    public String toString() {
-        return "Человек " + super.getName();
+    public String toString() throws NullPointerException{
+        String result = "Человек " + super.getName() + ' ';
+        for (Place elem: places){
+            result += elem.toString();
+        }
+        return result;
     }
 }

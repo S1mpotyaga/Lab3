@@ -16,6 +16,11 @@ public class Main {
 
         Kristofer.walkingable(Vinni, Somewhere);
         Kristofer.walkingable(Vinni, EnchantedPlace, TopOfHill, Forest);
+        try {
+            Kristofer.where();
+        } catch (NullPointerException e) {
+            System.out.println("Error! Список мест не инициализирован.");
+        }
         Kristofer.gameable(Vinni, EnchantedPlace, TopOfHill, Forest);
 
         Place Stocgholm = new Place("Стокгольм");
@@ -30,8 +35,22 @@ public class Main {
         Human Betan = new Human("Бетан");
         Human Baby = new Human("Малыш");
 
-        Sventonson.setFather(Father);
-        Sventonson.setMother(Mother);
+        try {
+            Sventonson.setFather(Father);
+        } catch (ParentsException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Sventonson.setFather(Father);
+        } catch (ParentsException e) {
+            System.out.println(e.getMessage());
+        }
+        try {
+            Sventonson.setMother(Mother);
+        } catch (ParentsException e) {
+            System.out.println(e.getMessage());
+        }
         Sventonson.setDuaghters(Bosse, Betan);
         Sventonson.setSons(Baby);
 

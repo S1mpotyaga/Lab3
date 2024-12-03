@@ -22,12 +22,21 @@ public class Family {
         this.placesOfResidence = new ArrayList<>();
     }
 
-    public void setFather(Human human) {
+    public void setFather(Human human) throws ParentsException{
+        for (Relative elem: relatives){
+            if (elem == Relative.FATHER)
+                throw new ParentsException();
+        }
         family.add(human);
         relatives.add(Relative.FATHER);
     }
 
-    public void setMother(Human human) {
+    public void setMother(Human human) throws ParentsException{
+        for (Relative elem: relatives){
+            if (elem == Relative.MOTHER){
+                throw new ParentsException();
+            }
+        }
         family.add(human);
         relatives.add(Relative.MOTHER);
     }
