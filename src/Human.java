@@ -9,10 +9,14 @@ public class Human extends Creature {
     }
 
     @Override
-    public void thinking(){}
+    public void thinking(){
+        System.out.println(this.getName() + " придумал.");
+    }
 
     @Override
-    public void nod(){}
+    public void nod(){
+        System.out.println(this.getName() + " кивнул.");
+    }
 
     public void setPlaces(Place ... args){
         this.places = new ArrayList<Place>();
