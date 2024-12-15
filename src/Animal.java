@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Animal extends Creature {
 
     Animal(String name) {
@@ -7,29 +9,32 @@ public class Animal extends Creature {
     @Override
     public void thinking(){
         this.setState(State.THINK);
-        System.out.println(this.getName() + " подумал.");
+        System.out.println(this.getName() + this.getState().toString());
     }
 
     @Override
     public void nod(){
         this.setState(State.NOD);
-        System.out.println(this.getName() + " кивнул.");
+        System.out.println(this.getName() + this.getState().toString());
     }
 
     @Override
     public int hashCode() {
-        final int MOD = (int) 1e9 + 7;
-        String name = super.getName();
-        long result = 0;
-        for (int i = 0; i < name.length(); ++i) {
-            result = (result * 31 % MOD + name.charAt(i)) % MOD;
-        }
-        result = (result * getTypeOfCreature().hashCode()) % MOD;
-        return (int) result;
+        Date date = new Date();
+        int result = (int)date.getTime();
+        result += this.getName().hashCode();
+        result *= this.getTypeOfCreature().hashCode();
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
         Creature tmp = (Creature) obj;
         if (super.getName().equals(tmp.getName()) && super.getTypeOfCreature() == tmp.getTypeOfCreature())
             return true;
@@ -38,6 +43,6 @@ public class Animal extends Creature {
 
     @Override
     public String toString() {
-        return "Животное " + super.getName();
+        return this.getTypeOfCreature().toString() + super.getName();
     }
 }

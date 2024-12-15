@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Human extends Creature {
     private Family family;
@@ -11,11 +12,13 @@ public class Human extends Creature {
     @Override
     public void thinking() {
         this.setState(State.THINK);
+        System.out.println(this.getName() + this.getState().toString());
     }
 
     @Override
     public void nod() {
         this.setState(State.NOD);
+        System.out.println(this.getName() + this.getState().toString());
     }
 
     public void setPlaces(Place... args) {
@@ -38,6 +41,10 @@ public class Human extends Creature {
 
     public ArrayList<Place> getPlaces() throws NullPointerException {
         return places;
+    }
+
+    public Family getFamily() {
+        return family;
     }
 
     public String where() throws NullPointerException {
@@ -64,22 +71,33 @@ public class Human extends Creature {
 
     @Override
     public int hashCode() {
-        final int MOD = (int) 1e9 + 7;
-        String name = super.getName();
-        long result = name.hashCode();
-        result = (result * getTypeOfCreature().hashCode()) % MOD;
-        return (int) result;
+        Date date = new Date();
+        int result = (int)date.getTime();
+        result += this.getName().hashCode() + this.getTypeOfCreature().hashCode();
+        for (Place place: places){
+            result += place.hashCode();
+        }
+        return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        Creature tmp = (Creature) obj;
-        return hashCode() == tmp.hashCode();
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        Human tmp = (Human) obj;
+        if (this.family.equals(tmp.getFamily()) && this.getPlaces().equals(tmp.getPlaces())){
+            return true;
+        }
+        return false;
     }
 
     @Override
     public String toString() throws NullPointerException {
-        String result = "Человек " + super.getName() + ' ';
+        String result = this.getTypeOfCreature().toString() + super.getName() + ' ';
         for (Place elem : places) {
             result += elem.toString();
         }

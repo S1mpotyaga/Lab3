@@ -1,5 +1,3 @@
-import java.lang.reflect.Type;
-
 public abstract class Creature implements Handshakeable, Gameable, Walkingable {
     private final String name;
     private final TypeOfCreature typeOfCreature;

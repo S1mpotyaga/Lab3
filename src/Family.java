@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Objects;
 
 public class Family {
     private ArrayList<Creature> family = new ArrayList<Creature>();
@@ -22,35 +24,35 @@ public class Family {
         this.placesOfResidence = new ArrayList<>();
     }
 
-    public void setFather(Human human) throws ParentsException{
+    public void setFather(Creature father) throws ParentsException {
         for (Relative elem: relatives){
             if (elem == Relative.FATHER)
                 throw new ParentsException();
         }
-        family.add(human);
+        family.add(father);
         relatives.add(Relative.FATHER);
     }
 
-    public void setMother(Human human) throws ParentsException{
+    public void setMother(Creature mother) throws ParentsException{
         for (Relative elem: relatives){
             if (elem == Relative.MOTHER){
                 throw new ParentsException();
             }
         }
-        family.add(human);
+        family.add(mother);
         relatives.add(Relative.MOTHER);
     }
 
-    public void setSons(Human... sons) {
-        for (Human human : sons) {
+    public void setSons(Creature... sons) {
+        for (Creature human : sons) {
             family.add(human);
             relatives.add(Relative.SON);
         }
     }
 
-    public void setDuaghters(Human... duaghters) {
-        for (Human human : duaghters) {
-            family.add(human);
+    public void setDuaghters(Creature... duaghters) {
+        for (Creature creature : duaghters) {
+            family.add(creature);
             relatives.add(Relative.DUAGHTER);
         }
     }
@@ -59,6 +61,10 @@ public class Family {
         for (Place elem: places){
             placesOfResidence.add(elem);
         }
+    }
+
+    public ArrayList<Place> getPlacesOfResidence(){
+        return this.placesOfResidence;
     }
 
     public String getSurname() {
@@ -78,38 +84,43 @@ public class Family {
         return nation;
     }
 
+    @Override
     public int hashCode() {
-        long result = 0;
-        final int MOD = (int) 1e9 + 7;
-        for (Creature creature : family)
-            result = (result + creature.getName().hashCode()) % MOD;
-        result = result * getSurname().hashCode() % MOD;
-        result = result * (getNation().equals("") ? 1 : getNation().hashCode() % MOD);
-        return (int) result;
-    }
-
-    public boolean equals(Object obj) {
-        Family other = (Family) obj;
-        return hashCode() == other.hashCode();
-    }
-
-    public String toString() {
-        String result = getNation() + " cемья " + getSurname() + ": ";
-        for (int i = 0; i < family.size(); ++i) {
-            if (relatives.get(i) == Relative.FATHER) {
-                result += "отец ";
-            } else if (relatives.get(i) == Relative.MOTHER)
-                result += "мать ";
-            else if (relatives.get(i) == Relative.DUAGHTER)
-                result += "дочь ";
-            else
-                result += "сын ";
-            result += family.get(i).getName() + ' ';
-        }
-        result += " живет в ";
-        for (Place elem: placesOfResidence){
-            result += elem.toString() + " ";
+        Date date = new Date();
+        int result = (int)date.getTime();
+        result += this.surname.hashCode() + this.nation.hashCode();
+        for (Place place: placesOfResidence){
+            result += place.hashCode();
         }
         return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        Family tmp = (Family) obj;
+        if (this.family.equals(tmp.getFamily()) && this.placesOfResidence.equals(((Family) obj).getPlacesOfResidence())){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder(getNation() + " cемья " + getSurname() + ": ");
+        for (int i = 0; i < family.size(); ++i) {
+            result.append(relatives.get(i));
+            result.append(family.get(i).getName()).append(' ');
+        }
+        result.append(" живет в ");
+        for (Place elem: placesOfResidence){
+            result.append(elem.toString()).append(" ");
+        }
+        return result.toString();
     }
 }
