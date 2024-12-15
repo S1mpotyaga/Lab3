@@ -9,13 +9,13 @@ public class Animal extends Creature {
     @Override
     public void thinking(){
         this.setState(State.THINK);
-        System.out.println(this.getName() + this.getState().toString());
+        System.out.println(this.getName() + ' ' + this.getState().toString());
     }
 
     @Override
     public void nod(){
         this.setState(State.NOD);
-        System.out.println(this.getName() + this.getState().toString());
+        System.out.println(this.getName() + ' ' + this.getState().toString());
     }
 
     @Override
