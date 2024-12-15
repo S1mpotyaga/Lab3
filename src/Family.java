@@ -114,7 +114,7 @@ public class Family {
     public String toString() {
         StringBuilder result = new StringBuilder(getNation() + " cемья " + getSurname() + ": ");
         for (int i = 0; i < family.size(); ++i) {
-            result.append(relatives.get(i));
+            result.append(relatives.get(i)).append(' ');
             result.append(family.get(i).getName()).append(' ');
         }
         result.append(" живет в ");
