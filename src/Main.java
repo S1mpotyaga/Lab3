@@ -1,3 +1,8 @@
+import enums.*;
+import classes.*;
+import interfaces.*;
+import exceptions.*;
+
 public class Main {
     public static void main(String[] args) {
         Animal vinni = new Animal("Винни");

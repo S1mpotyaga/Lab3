@@ -1,11 +1,18 @@
+package classes;
+
 import java.util.ArrayList;
 import java.util.Date;
+import enums.*;
+import classes.*;
+import interfaces.*;
+import exceptions.*;
+
 
 public class Human extends Creature {
     private Family family;
     private ArrayList<Place> places;
 
-    Human(String name) {
+    public Human(String name) {
         super(name, TypeOfCreature.HUMAN);
     }
 

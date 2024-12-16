@@ -1,3 +1,6 @@
+package enums;
+
+
 public enum TypeOfCreature {
     HUMAN("человек"),
     ANIMAL("животное");

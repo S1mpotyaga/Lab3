@@ -1,3 +1,6 @@
+package enums;
+
+
 public enum State {
     THINK("думает"),
     PLAY("играет"),

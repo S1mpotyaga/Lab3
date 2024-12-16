@@ -1,9 +1,15 @@
+package classes;
+
+import enums.*;
+import interfaces.*;
+import exceptions.*;
+
 public abstract class Creature implements Handshakeable, Gameable, Walkingable {
     private final String name;
     private final TypeOfCreature typeOfCreature;
     private State state = State.NONE;
 
-    Creature(String name, TypeOfCreature typeOfCreature) {
+    public Creature(String name, TypeOfCreature typeOfCreature) {
         this.name = name;
         this.typeOfCreature = typeOfCreature;
     }

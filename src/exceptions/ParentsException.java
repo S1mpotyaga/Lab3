@@ -1,3 +1,5 @@
+package exceptions;
+
 public class ParentsException extends Exception{
 
     @Override

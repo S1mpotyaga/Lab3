@@ -1,6 +1,12 @@
+package classes;
+
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
+import enums.*;
+import classes.*;
+import interfaces.*;
+import exceptions.*;
+
 
 public class Family {
     private ArrayList<Creature> family = new ArrayList<Creature>();
@@ -9,14 +15,14 @@ public class Family {
     private final String surname;
     private final String nation;
 
-    Family(String surname, Creature creature) {
+    public Family(String surname, Creature creature) {
         this.surname = surname;
         this.nation = "";
         this.family.add(creature);
         relatives.add(Relative.ALONE);
     }
 
-    Family(String surname, String nation) {
+    public Family(String surname, String nation) {
         this.surname = surname;
         this.nation = nation;
         this.family = new ArrayList<Creature>();

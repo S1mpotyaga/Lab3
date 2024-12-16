@@ -1,8 +1,14 @@
+package classes;
+
 import java.util.Date;
+import enums.*;
+import classes.*;
+import interfaces.*;
+import exceptions.*;
 
 public class Animal extends Creature {
 
-    Animal(String name) {
+    public Animal(String name) {
         super(name, TypeOfCreature.ANIMAL);
     }
 

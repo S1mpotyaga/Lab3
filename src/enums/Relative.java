@@ -1,3 +1,5 @@
+package enums;
+
 public enum Relative {
     FATHER("отец"),
     MOTHER("мать"),
