@@ -7,7 +7,8 @@ public enum State {
     WALK("идет"),
     GREET("здоровается"),
     NOD("кивает"),
-    NONE("бездельничает");
+    NONE("бездельничает"),
+    LOOK("смотрит");
 
     private String state;
 

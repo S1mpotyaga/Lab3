@@ -121,7 +121,7 @@ public class Family {
         StringBuilder result = new StringBuilder(getNation() + " cемья " + getSurname() + ": ");
         for (int i = 0; i < family.size(); ++i) {
             result.append(relatives.get(i)).append(' ');
-            result.append(family.get(i).getName()).append(' ');
+            result.append(family.get(i).toString()).append(' ');
         }
         result.append(" живет в ");
         for (Place elem: placesOfResidence){

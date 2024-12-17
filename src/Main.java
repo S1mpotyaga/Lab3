@@ -8,8 +8,11 @@ public class Main {
         Animal vinni = new Animal("Винни");
         Family puch = new Family("Пух", vinni);
 
-        vinni.thinking();
+        Degree degreeThinkingVinni = Degree.AVG;
+
+        vinni.thinking(degreeThinkingVinni);
         vinni.nod();
+        vinni.look();
 
         Human kristofer = new Human("Кристофер");
         Family robin = new Family("Робин", kristofer);

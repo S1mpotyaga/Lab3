@@ -13,9 +13,15 @@ public class Animal extends Creature {
     }
 
     @Override
-    public void thinking(){
+    public void look(){
+        this.setState(State.LOOK);
+        System.out.println(this.getName() + ' ' + this.getState());
+    }
+
+    @Override
+    public void thinking(Degree degree) {
         this.setState(State.THINK);
-        System.out.println(this.getName() + ' ' + this.getState().toString());
+        System.out.println(this.getName() + ' ' + degree.toString() + ' ' + this.getState().toString());
     }
 
     @Override
@@ -35,20 +41,6 @@ public class Animal extends Creature {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj == null || this.getClass() != obj.getClass()){
-            return false;
-        }
-        if (this == obj){
-            return true;
-        }
-        Creature tmp = (Creature) obj;
-        if (super.getName().equals(tmp.getName()) && super.getTypeOfCreature() == tmp.getTypeOfCreature())
-            return true;
-        return false;
-    }
-
-    @Override
-    public String toString() {
-        return this.getTypeOfCreature().toString() + super.getName();
+        return super.equals(obj);
     }
 }

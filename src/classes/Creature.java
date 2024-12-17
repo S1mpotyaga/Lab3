@@ -8,15 +8,26 @@ public abstract class Creature implements Handshakeable, Gameable, Walkingable {
     private final String name;
     private final TypeOfCreature typeOfCreature;
     private State state = State.NONE;
+    private Type type = Type.ORDER;
 
     public Creature(String name, TypeOfCreature typeOfCreature) {
         this.name = name;
         this.typeOfCreature = typeOfCreature;
     }
 
-    abstract void thinking();
+    abstract void look();
+
+    abstract void thinking(Degree degree);
 
     abstract void nod();
+
+    public void setType(Type type){
+        this.type = type;
+    }
+
+    public Type getType(){
+        return type;
+    }
 
     public void setState(State state){
         this.state = state;
@@ -64,5 +75,24 @@ public abstract class Creature implements Handshakeable, Gameable, Walkingable {
             System.out.print(elem.toString() + ' ');
         }
         System.out.println();
+    }
+
+    @Override
+    public String toString(){
+        return this.getTypeOfCreature().toString() + ' ' + this.getType() + ' ' + this.getName();
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if (obj == null || this.getClass() != obj.getClass()){
+            return false;
+        }
+        if (this == obj){
+            return true;
+        }
+        Creature tmp = (Creature) obj;
+        if (this.getName().equals(tmp.getName()) && this.getTypeOfCreature() == tmp.getTypeOfCreature())
+            return true;
+        return false;
     }
 }

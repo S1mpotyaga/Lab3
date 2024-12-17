@@ -17,9 +17,15 @@ public class Human extends Creature {
     }
 
     @Override
-    public void thinking() {
+    public void look(){
+        this.setState(State.LOOK);
+        System.out.println(this.getName() + ' ' + this.getState());
+    }
+
+    @Override
+    public void thinking(Degree degree) {
         this.setState(State.THINK);
-        System.out.println(this.getName() + ' ' + this.getState().toString());
+        System.out.println(this.getName() + ' ' + degree.toString() + ' ' + this.getState().toString());
     }
 
     @Override
@@ -100,14 +106,5 @@ public class Human extends Creature {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public String toString() throws NullPointerException {
-        String result = this.getTypeOfCreature().toString() + super.getName() + ' ';
-        for (Place elem : places) {
-            result += elem.toString();
-        }
-        return result;
     }
 }
